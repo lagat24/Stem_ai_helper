@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STEM AI HELPER</title>
+
+    <link
+    rel="stylesheet"
+    href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="container landing-page">
+
+        <h1>STEM AI HELPER</h1>
+
+        <p class="tagline">
+            Learn STEM actively — not passively.
+        </p>
+
+        <p>
+            STEM AI HELPER is an interactive learning assistant designed
+            to strengthen understanding through practice, feedback,
+            explanations, and adaptive questioning.
+        </p>
+
+        <div class="features">
+
+            <div class="feature-card">
+                <h3>🧠 Practice Questions</h3>
+                <p>
+                    Generate STEM questions by topic and test your understanding.
+                </p>
+            </div>
+
+            <div class="feature-card">
+                <h3>📘 Explanations</h3>
+                <p>
+                    Receive explanations that help you understand mistakes and concepts.
+                </p>
+            </div>
+
+            <div class="feature-card">
+                <h3>📈 Progress Tracking</h3>
+                <p>
+                    Track questions answered, score, and learning progress.
+                </p>
+            </div>
+
+        </div>
+
+        <a href="/dashboard" class="btn">
+            Start Learning
+        </a>
+
+    </div>
+
+<script
+src="{{ url_for('static', filename='logic.js') }}">
+
+</script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+# Environment variables (Crucial for security)
+.env
+.env.local
+
+# Python Virtual Environments
+.venv/
+venv/
+ENV/
+env/
+
+# Python cache and temporary compilation files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+
+# Operating system trash files
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# IDE configuration folders (Optional, keeps repo clean)
+.vscode/
+.idea/

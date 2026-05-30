@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>STEM AI HELPER</h1>
+
+    <!-- STATS -->
+    <div class="stats-bar">
+
+        <div class="stat-box">
+            <h3>Question</h3>
+            <p id="questionCounter">1 / 10</p>
+        </div>
+
+        <div class="stat-box">
+            <h3>Score</h3>
+            <p id="scoreCounter">0</p>
+        </div>
+
+    </div>
+
+    <!-- TOPIC -->
+    <p>Enter a topic you want to revise.</p>
+
+    <input
+        id="topic"
+        type="text"
+        placeholder="e.g. Derivatives">
+
+    <button onclick="startSession()">
+        Start
+    </button>
+
+    <!-- QUESTION -->
+    <div class="question-card">
+
+        <h2>Question</h2>
+
+        <p id="questionText">
+            Click "Start" to generate your first question.
+        </p>
+
+    </div>
+
+    <!-- ANSWER -->
+    <p>Your Answer</p>
+
+    <textarea
+        id="useranswer"
+        placeholder="Type your answer here..."></textarea>
+
+    <!-- ACTION BUTTONS -->
+    <div class="button-group">
+
+        <button onclick="submitAnswer()">
+            Submit
+        </button>
+
+        <button
+            id="explainBtn"
+            onclick="explainAnswer()"
+            disabled>
+            Explain
+        </button>
+
+        <button onclick="nextQuestion()">
+            Next Question
+        </button>
+
+    </div>
+
+    <!-- FEEDBACK -->
+    <div class="feedback-card" id="feedbackbox">
+        Feedback will appear here.
+    </div>
+
+</div>
+
+<script
+    src="{{ url_for('static', filename='logic.js') }}">
+</script>
+
+</body>
+</html>
