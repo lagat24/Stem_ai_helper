@@ -31,6 +31,8 @@ limiter = Limiter(
 
 sessions = {}
 
+MAX_SESSIONS = 500
+
 # ==========================================
 # PAGES
 # ==========================================
@@ -55,6 +57,12 @@ def start():
 
     data = request.get_json()
 
+    if not data:
+        return jsonify({
+            "success": False,
+            "message": "No data received."
+        }), 400
+
     topic = data.get("topic")
 
     # VALIDATE TOPIC
@@ -70,6 +78,10 @@ def start():
         }), 400
 
     session_id = data.get("session_id")
+
+    if len(sessions) > MAX_SESSIONS:
+
+        sessions.clear()
 
     question_data = generate_question(topic)
 
@@ -97,9 +109,21 @@ def submit():
 
     data = request.get_json()
 
+    if not data:
+        return jsonify({
+            "success": False,
+            "message": "Invalid request."
+        }), 400
+
     session_id = data.get("session_id")
 
     user_answer = data.get("user_answer")
+
+    if not user_answer:
+        return jsonify({
+            "success": False,
+            "message": "Answer required."
+        }), 400
 
     session = sessions.get(session_id)
 
@@ -151,6 +175,12 @@ def next_question():
 
     data = request.get_json()
 
+    if not data:
+        return jsonify({
+            "success": False,
+            "message": "Invalid request."
+        }), 400
+
     session_id = data.get("session_id")
 
     session = sessions.get(session_id)
@@ -195,5 +225,10 @@ def next_question():
 # RUN
 # ==========================================
 
+import os
+
 if __name__ == "__main__":
-    app.run(debug=True, port=8080)
+    app.run(
+        host="0.0.0.0",
+        port=int(os.getenv("PORT", 8080))
+    )

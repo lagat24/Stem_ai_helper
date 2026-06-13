@@ -169,6 +169,13 @@ function renderQuestion() {
 
 async function submitAnswer() {
 
+    const submitButton =
+    document.querySelector(
+        'button[onclick="submitAnswer()"]'
+    );
+
+    submitButton.disabled = true;
+
     if (!sessionStarted) {
 
         feedbackBox.innerHTML =
@@ -227,6 +234,8 @@ async function submitAnswer() {
             );
         }
 
+        submitButton.disabled = false;
+
         feedbackBox.innerHTML =
         data.feedback;
 
@@ -239,6 +248,8 @@ async function submitAnswer() {
     } catch (error) {
 
         console.error(error);
+
+        submitButton.disabled = false;
 
         feedbackBox.innerHTML =
         "Unable to evaluate answer.";
