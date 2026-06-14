@@ -59,7 +59,7 @@ def generate_question(topic):
     )
 
     # Retry AI generation 3 times
-    for attempt in range(3):
+    for attempt in range(1):
 
         try:
 
